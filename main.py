@@ -110,8 +110,14 @@ def getData(driver):
                                 try:
                                     problemID = find_element_short(driver, By.XPATH, f'//*[@id="pageContent"]/div[5]/div[6]/table/tbody/tr[1]/th[{j}]/a').text
                                 except:
-                                    print(f'{colors.red}Error getting problem Id{colors.reset}', end = ' ')
-                                    break
+                                    try:
+                                        problemID = find_element_short(driver, By.XPATH, f'//*[@id="pageContent"]/div[5]/div[6]/table/tbody/tr[1]/th[{j}]/span').text
+                                    except:  
+                                        try:
+                                            problemID = find_element_short(driver, By.XPATH, f'//*[@id="pageContent"]/div[5]/div[6]/table/tbody/tr[1]/th[{j}]').text
+                                        except:                                        
+                                            print(f'{colors.red}Error getting problem Id with j = {j} {colors.reset}', end = ' ')
+                                            break
                                 try:
                                     test = str(problems)
                                     if test.find('+') != -1:
