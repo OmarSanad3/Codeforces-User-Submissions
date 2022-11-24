@@ -77,10 +77,28 @@ def getData(driver):
     try:
         for pages in range(1, 500):
             print(f'{colors.blue}Page #{pages}{colors.reset}')
-            find_element_short(driver, By.XPATH, f'//*[@id="pageContent"]/div[10]/nobr[{pages}]').click()
+            x = 0
+            try:
+                find_element_short(driver, By.XPATH, f'//*[@id="pageContent"]/div[10]/nobr[{pages}]').click()
+            except:
+                x = 1
             try:
                 for i in range(2, 5000):
-                    handle = find_element_short(driver, By.XPATH, f'//*[@id="pageContent"]/div[5]/div[6]/table/tbody/tr[{i}]/td[2]/a').text
+                    y = 0
+                    try:
+                        handle = find_element_short(driver, By.XPATH, f'//*[@id="pageContent"]/div[5]/div[6]/table/tbody/tr[{i}]/td[2]/a').text
+                    except:
+                        try:
+                            handle = find_element_short(driver, By.XPATH, f'//*[@id="pageContent"]/div[5]/div[6]/table/tbody/tr[{i}]/td[2]/span').text
+                        except:
+                            try:
+                                handle = find_element_short(driver, By.XPATH, f'//*[@id="pageContent"]/div[5]/div[6]/table/tbody/tr[{i}]/td[2]').text
+                            except:
+                                y = 1
+                    if y == 1:
+                        print(f'{colors.red}No more Handles in this page{colors.reset}')
+                        break
+
                     if not handle in dictionaryCheck:
                         continue
                     cnt = 0
@@ -109,6 +127,9 @@ def getData(driver):
                         print(f'{colors.red}Error getting problems{colors.reset}')
             except:
                 print(f'{colors.red}No more Handles in this page{colors.reset}')
+            if x == 1:
+                print(f'{colors.red}No more pages in the standings{colors.reset}')
+                break
     except:
         print(f'{colors.red}No more pages in the standings{colors.reset}')
     return dictAccepted
