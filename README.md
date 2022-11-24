@@ -51,7 +51,7 @@ pip install --upgrade -r requirements.txt
 
 2. open folder `data`
    1. put your standing's links in `links.txt`
-   2. put your trainees names and handles in `trainees.csv`
+   2. put your trainees names and handles in `data.csv`
 
 3. open your terminal and run this command:
 
@@ -60,8 +60,12 @@ pip install --upgrade -r requirements.txt
     python3 main.py
     ```
 
-4. your csv file will be in the folder `data`
+4. your csv file will be in the folder `data` in `trainees.csv`
 
 5. **Enjoy!**
 
 ## Demo Video
+
+
+https://user-images.githubusercontent.com/63050133/203844258-f325bc10-7dd2-43a8-920b-cc3686355b18.mp4
+
