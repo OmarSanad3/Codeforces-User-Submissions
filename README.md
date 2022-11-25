@@ -24,10 +24,10 @@ sudo apt install python3-pip
 
 ```shell
 # downloading the script
-git clone https://github.com/7oSkaaa/Codeforces-User-Submissions.git
+git clone https://github.com/MeMoElprince/Codeforces-User-Submissions.git
 ```
 
-or you can download the script from [here](https://github.com/7oSkaaa/Codeforces-User-Submissions/archive/refs/heads/main.zip)
+or you can download the script from [here](https://github.com/MeMoElprince/Codeforces-User-Submissions/archive/refs/heads/main.zip)
 
 ***open your terminal and run these commands***
 
