@@ -24,16 +24,16 @@ sudo apt install python3-pip
 
 ```shell
 # downloading the script
-git clone https://github.com/7oSkaaa/Codeforces-Friends-Script.git
+git clone https://github.com/7oSkaaa/Codeforces-User-Submissions.git
 ```
 
-or you can download the script from [here](https://github.com/7oSkaaa/Codeforces-Friends-Script/archive/refs/heads/main.zip)
+or you can download the script from [here](https://github.com/7oSkaaa/Codeforces-User-Submissions/archive/refs/heads/main.zip)
 
 ***open your terminal and run these commands***
 
 ```shell
 # open the folder of the script
-cd Codeforces-Friends-Script
+cd Codeforces-User-Submissions
 ```
 
 ```shell
