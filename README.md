@@ -50,7 +50,7 @@ pip install --upgrade -r requirements.txt
    2. PASSWORD: your codeforces password
 
 2. open folder `data`
-   1. put your standing's links in `links.txt`
+   1. put your standing's links in `links.txt` (this link must contain the parameter "list") [see the file to see an example of the "list" parameter]
    2. put your trainees names and handles in `data.csv`
 
 3. open your terminal and run this command:
