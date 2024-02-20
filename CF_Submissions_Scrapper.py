@@ -128,7 +128,7 @@ def openCodeforces(driver, opening_message=True):
 # main process Getting Data from standings
 
 def getData(driver, trainees):
-    contest_title = find_element(driver, By.XPATH, '//*[@id="pageContent"]/div[3]/div/a').text
+    contest_title = find_element(driver, By.XPATH, '//*[@id="pageContent"]/div[4]/div/a').text
     print(f'{colors.blue}Getting Data from {contest_title}... {colors.reset}')
     dict = defaultdict(set)
     dictAccepted = defaultdict(set)
@@ -145,13 +145,13 @@ def getData(driver, trainees):
                 for i in range(2, 400):
                     is_handle_availabe = True
                     try:
-                        handle = find_element(driver, By.XPATH, f'//*[@id="pageContent"]/div[5]/div[6]/table/tbody/tr[{i}]/td[2]/a', 0).text
+                        handle = find_element(driver, By.XPATH, f'//*[@id="pageContent"]/div[6]/div[6]/table/tbody/tr[{i}]/td[2]/a', 0).text
                     except:
                         try:
-                            handle = find_element(driver, By.XPATH, f'//*[@id="pageContent"]/div[5]/div[6]/table/tbody/tr[{i}]/td[2]/span', 0).text
+                            handle = find_element(driver, By.XPATH, f'//*[@id="pageContent"]/div[6]/div[6]/table/tbody/tr[{i}]/td[2]/span', 0).text
                         except:
                             try:
-                                handle = find_element(driver, By.XPATH, f'//*[@id="pageContent"]/div[5]/div[6]/table/tbody/tr[{i}]/td[2]', 0).text
+                                handle = find_element(driver, By.XPATH, f'//*[@id="pageContent"]/div[6]/div[6]/table/tbody/tr[{i}]/td[2]', 0).text
                             except:
                                 is_handle_availabe = False
                     if is_handle_availabe == False:
@@ -164,18 +164,18 @@ def getData(driver, trainees):
                     try:
                         for j in range(5, 40):
                             try:
-                                problems = find_element(driver, By.XPATH, f'//*[@id="pageContent"]/div[5]/div[6]/table/tbody/tr[{i}]/td[{j}]', 0).text
+                                problems = find_element(driver, By.XPATH, f'//*[@id="pageContent"]/div[6]/div[6]/table/tbody/tr[{i}]/td[{j}]', 0).text
                                 all_problems = max(all_problems, j - 4)
                                 try:
-                                    problemID = find_element(driver, By.XPATH, f'//*[@id="pageContent"]/div[5]/div[6]/table/tbody/tr[1]/th[{j}]/a', 0).text
+                                    problemID = find_element(driver, By.XPATH, f'//*[@id="pageContent"]/div[6]/div[6]/table/tbody/tr[1]/th[{j}]/a', 0).text
                                     all_problems = max(all_problems, j - 4)
                                 except:
                                     try:
-                                        problemID = find_element(driver, By.XPATH, f'//*[@id="pageContent"]/div[5]/div[6]/table/tbody/tr[1]/th[{j}]/span', 0).text
+                                        problemID = find_element(driver, By.XPATH, f'//*[@id="pageContent"]/div[6]/div[6]/table/tbody/tr[1]/th[{j}]/span', 0).text
                                         all_problems = max(all_problems, j - 4)
                                     except:  
                                         try:
-                                            problemID = find_element(driver, By.XPATH, f'//*[@id="pageContent"]/div[5]/div[6]/table/tbody/tr[1]/th[{j}]', 0).text
+                                            problemID = find_element(driver, By.XPATH, f'//*[@id="pageContent"]/div[6]/div[6]/table/tbody/tr[1]/th[{j}]', 0).text
                                             all_problems = max(all_problems, j - 4)
                                         except:                                        
                                             print(f'{colors.red}Error getting problem Id with j = {j} {colors.reset}', end = ' ')
@@ -240,13 +240,16 @@ def main():
     # create driver 
     driver = createDriver()
     
+    # set page load timeout to 30
+    driver.set_page_load_timeout(30)
+    
     # open the login codeforces page
     driver = openCodeforces(driver)
     
     # scraping the data from the standings
     for link in links:
         driver.get(link)
-        time.sleep(2)
+        time.sleep(5)
         [trainees, title] = getData(driver, trainees)
         print(f'\n{colors.gold}Done with {title} {colors.reset} ✅\n')
     
